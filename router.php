@@ -15,6 +15,12 @@ switch ($page) {
         $controller->login();
         break;
     
+    case 'logout':
+        include_once('controller/utilisateurController.php');
+        $controller = new utilisateurController();
+        $controller->logout();
+        break;
+
     case 'dashboard':
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -25,12 +31,6 @@ switch ($page) {
         }
         include 'view/dashboard.php';
             break;
-    
-    case 'logout':
-        include_once('controller/utilisateurController.php');
-        $controller = new utilisateurController();
-        $controller->logout();
-        break;      
 
     case 'contact':
         include_once('controller/formulaireController.php');
@@ -70,28 +70,16 @@ switch ($page) {
         include_once('controller/produitsController.php');
         $controller = new produitsController();
         $controller->supprimerProduit($_GET['id_produit']);
-        break;  
-        
-    case 'passerCommande':
-        include_once('controller/commandeController.php');
-        $controller = new commandeController();
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Vous pouvez obtenir l'id de l'utilisateur connecté et la liste des produits du panier
-            session_start();
-            $id_utilisateur = $_SESSION['id_utilisateur'];
-            $produits = $_POST['produits']; // Supposons que les produits sont envoyés sous forme de tableau
-            $controller->passerCommande($id_utilisateur, $produits);
-        }
         break;
-    
-    // case 'commandes':
+        
+    // case 'passerCommande':
     //     include_once('controller/commandeController.php');
-    //     session_start();
-    //     if (isset($_SESSION['id_utilisateur'])) {
-    //         $controller = new commandeController();
-    //         $controller->afficherCommandes($_SESSION['id_utilisateur']);
-    //     } else {
-    //         header('Location: index.php?page=login');
+    //     $controller = new commandeController();
+    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //         session_start();
+    //         $id_utilisateur = $_SESSION['id_utilisateur'];
+    //         $produits = $_POST['produits'];
+    //         $controller->passerCommande($id_utilisateur, $produits);
     //     }
     //     break;
         
@@ -107,12 +95,12 @@ switch ($page) {
         $controller = new commandeController();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_utilisateur = $_SESSION['id_utilisateur'];
-            $produits = [$_POST['id_produit']]; // Supposons que les produits sont envoyés sous forme de tableau
+            $produits = [$_POST['id_produit']];
             $controller->passerCommande($id_utilisateur, $produits);
         } else {
             include 'view/commander.php';
         }
-        break;   
+        break;
 
     case 'contact':
         include 'view/contact.php';

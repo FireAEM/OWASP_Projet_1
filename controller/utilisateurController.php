@@ -38,7 +38,7 @@ class utilisateurController {
             $prenom = $_POST['prenom'];
             $email = $_POST['email'];
             $mot_de_passe = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT);
-            $id_role_utilisateur = 1; // Par défaut, un rôle utilisateur standard
+            $id_role_utilisateur = 1; // Par défaut, un rôle utilisateur client
 
             if ($this->model->getUtilisateurByEmail($email)) {
                 $this->setFlashMessage('error', 'Le compte existe déjà.');

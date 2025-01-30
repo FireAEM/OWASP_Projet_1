@@ -33,7 +33,9 @@ class produitsController {
         if ($produit) {
             include 'view/produit.php';
         } else {
-            echo "Produit non trouvé.";
+            $this->setFlashMessage('error', 'Produit non trouvé.');
+            header('Location: index.php?page=produits');
+            exit;
         }
     }
 
@@ -83,7 +85,9 @@ class produitsController {
             if ($produit) {
                 include 'view/modifierProduit.php';
             } else {
-                echo "Produit non trouvé.";
+                $this->setFlashMessage('error', 'Produit non trouvé.');
+                header('Location: index.php?page=produits');
+                exit;
             }
         }
     }

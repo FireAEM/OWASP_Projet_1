@@ -1,12 +1,12 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
-if (!isset($_SESSION['id_utilisateur']) || $_SESSION['id_role_utilisateur'] != 2) {
-    header('Location: index.php?page=accueil');
-    exit;
-}
+    if (!isset($_SESSION['id_utilisateur']) || $_SESSION['id_role_utilisateur'] != 2) {
+        header('Location: index.php?page=accueil');
+        exit;
+    }
 ?>
 
 <div class="home">
@@ -42,5 +42,4 @@ if (!isset($_SESSION['id_utilisateur']) || $_SESSION['id_role_utilisateur'] != 2
             </form>
         </div>
     </div>
-
 </div>
