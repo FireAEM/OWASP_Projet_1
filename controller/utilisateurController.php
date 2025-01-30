@@ -58,11 +58,11 @@ class utilisateurController {
     public function login()
     {
         $this->redirectIfLoggedIn();
-
+    
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'];
             $mot_de_passe = $_POST['mot_de_passe'];
-
+    
             $utilisateur = $this->model->getUtilisateurByEmail($email);
             if ($utilisateur && password_verify($mot_de_passe, $utilisateur['mot_de_passe'])) {
                 if (session_status() == PHP_SESSION_NONE) {
@@ -70,6 +70,8 @@ class utilisateurController {
                 }
                 $_SESSION['id_utilisateur'] = $utilisateur['id_utilisateur'];
                 $_SESSION['nom'] = $utilisateur['nom'];
+                $_SESSION['prenom'] = $utilisateur['prenom'];
+                $_SESSION['email'] = $utilisateur['email'];
                 $this->setFlashMessage('success', 'Connexion réussie!');
                 header('Location: index.php?page=accueil');
                 exit;
@@ -81,7 +83,7 @@ class utilisateurController {
         } else {
             include 'view/login.php';
         }
-    }
+    }    
 
     public function logout()
     {

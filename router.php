@@ -29,7 +29,13 @@ switch ($page) {
         $controller = new utilisateurController();
         $controller->logout();
         break;      
-    
+        
+    case 'contact':
+        include_once('controller/formulaireController.php');
+        $controller = new formulaireController();
+        $controller->contact();
+        break;
+        
     case 'produits':
         include_once('controller/produitsController.php');
         $controller = new produitsController();

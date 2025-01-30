@@ -1,3 +1,19 @@
+<?php
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    $nom = '';
+    $prenom = '';
+    $email = '';
+
+    if (isset($_SESSION['id_utilisateur'])) {
+        $nom = htmlspecialchars($_SESSION['nom']);
+        $prenom = htmlspecialchars($_SESSION['prenom']);
+        $email = htmlspecialchars($_SESSION['email']);
+    }
+?>
+
 <div class="home">
     <div class="contact">
         <div class="contactInfo">
@@ -8,24 +24,32 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42058.277306962074!2d2.2875336486328064!3d48.78871820000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e673e24e04a9c3%3A0xc55cb3e676f95321!2sEfrei!5e0!3m2!1sfr!2sfr!4v1734089567433!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <form action="index.php?page=contact" method="POST" class="contactForm">
-            <div class="formGroup">
+            
+            <?php
+                if (isset($_SESSION['flash_message'])) {
+                    echo '<p class="' . $_SESSION['flash_message']['type'] . '">' . htmlspecialchars($_SESSION['flash_message']['message']) . '</p>';
+                    unset($_SESSION['flash_message']);
+                }
+            ?>
+
+            <div>
                 <label for="nom">Nom</label>
-                <input type="text" id="nom" name="nom" required>
+                <input type="text" id="nom" name="nom" maxlength="255" required="required" value="<?php echo $nom; ?>">
             </div>
 
-            <div class="formGroup">
+            <div>
                 <label for="prenom">Prénom</label>
-                <input type="text" id="prenom" name="prenom" required>
+                <input type="text" id="prenom" name="prenom" maxlength="255" required="required" value="<?php echo $prenom; ?>">
             </div>
 
-            <div class="formGroup">
+            <div>
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" maxlength="255" required="required" value="<?php echo $email; ?>">
             </div>
 
-            <div class="formGroup">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
+            <div>
+                <label for="contenu">Message</label>
+                <textarea id="contenu" name="contenu" rows="5" maxlength="25000" required="required"></textarea>
             </div>
 
             <button type="submit">Envoyer</button>
