@@ -1,21 +1,21 @@
         <footer>
             <div class="footerContent">
                 <div class="footerLogo">
-                    <img src="image/logo.png" alt="Smartbike">
-                    <span>Smartbike</span>
+                    <img src="images/logo.png" alt="Square">
+                    <span>Square</span>
                 </div>
                 <div class="footerSocial">
                     <a href="#" class="social-icon">
-                        <img src="image/twitter.png" alt="Twitter">
+                        <img src="images/twitter.png" alt="Twitter">
                     </a>
                     <a href="#" class="social-icon">
-                        <img src="image/facebook.png" alt="Facebook">
+                        <img src="images/facebook.png" alt="Facebook">
                     </a>
                     <a href="#" class="social-icon">
-                        <img src="image/instagram.png" alt="Instagram">
+                        <img src="images/instagram.png" alt="Instagram">
                     </a>
                     <a href="#" class="social-icon">
-                        <img src="image/tiktok.png" alt="TikTok">
+                        <img src="images/tiktok.png" alt="TikTok">
                     </a>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <div class="home productDetails">
     <div class="productDetailsImg">
-        <img src="image/<?= htmlspecialchars($produit['photo']) ?>" alt="<?= htmlspecialchars($produit['nom']) ?>">
+        <img src="images/<?= htmlspecialchars($produit['image']) ?>" alt="<?= htmlspecialchars($produit['nom']) ?>">
     </div>
     <div class="productDetailsFeatures">
         <h1><?= htmlspecialchars($produit['nom']) ?></h1>

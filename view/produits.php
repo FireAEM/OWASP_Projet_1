@@ -7,7 +7,7 @@
         <?php else: ?>
             <?php foreach ($produits as $produit): ?>
                 <div class="productItem" onclick="navigateToProduct(<?= htmlspecialchars($produit['id_produit']) ?>);">
-                    <img src="image/<?= htmlspecialchars($produit['photo']) ?>" alt="<?= htmlspecialchars($produit['nom']) ?>">
+                    <img src="images/<?= htmlspecialchars($produit['image']) ?>" alt="<?= htmlspecialchars($produit['nom']) ?>">
                     <div class="productContent">
                         <h3><?= htmlspecialchars($produit['nom']) ?></h3>
                         <p><?= htmlspecialchars($produit['description']) ?></p>

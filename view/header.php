@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr-FR" dir="ltr">
     <head>
-        <title>Smartbike</title>
-        <meta name="description" content="Vente de vélos">
+        <title>Square</title>
+        <meta name="description" content="Vente de smartphones">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="image/logo.png">
+        <link rel="icon" href="images/logo.png">
         <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
         <header>
             <a href="index.php">
-                <img src="image/logo.png" alt="Smartbike Logo" class="headerLogo">
+                <img src="images/logo.png" alt="Square Logo" class="headerLogo">
             </a>
 
             <nav>
@@ -25,7 +25,7 @@
             <div class="headerContainer">
                 <div class="headerSearch">
                     <input type="text" placeholder="Rechercher un produit...">
-                    <img src="image/search.png" alt="Search Icon">
+                    <img src="images/search.png" alt="Search Icon">
                 </div>
 
                 <a href="index.php?page=contact" class="headerContact">
