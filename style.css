@@ -363,6 +363,7 @@ nav ul li a:hover {
     border: 1px solid var(--border-color1);
     border-radius: 10px;
     padding: 10px;
+    resize: vertical;
 }
 
 .registerFormContainer button, .loginFormContainer button, .contactForm button {
@@ -378,6 +379,54 @@ nav ul li a:hover {
     text-decoration: underline;
     text-underline-offset: 5px;
     text-decoration-thickness: 1px;
+}
+
+
+
+/* CSS pour le tableau de bord •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• */
+
+.dashboardContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.dashboardHeaderContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background: linear-gradient(to right, var(--accent-color1), var(--accent-color2));
+    border-radius: 20px;
+}
+.dashboardHeaderContainer h1 {
+    margin: 0;
+}
+
+.dashboardOrdersContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.dashboardOrdersContainer h2 {
+    margin: 0;
+}
+
+.orderItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(250, 250, 250);
+    border-radius: 10px;
+}
+.orderItem p {
+    margin: 0;
+    font-weight: 300;
+}
+.orderItem > p:first-child {
+    font-weight: 500;
 }
 
 

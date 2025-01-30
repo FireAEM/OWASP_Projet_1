@@ -1,11 +1,14 @@
+<?php
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+?>
+
 <div class="home">
 
     <?php
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
         if (isset($_SESSION['flash_message'])) {
-            echo '<p class="' . $_SESSION['flash_message']['type'] . '">' . $_SESSION['flash_message']['message'] . '</p>';
+            echo '<p class="' . $_SESSION['flash_message']['type'] . '">' . htmlspecialchars($_SESSION['flash_message']['message']) . '</p>';
             unset($_SESSION['flash_message']);
         }
     ?>
@@ -23,9 +26,19 @@
                     <h3><?= htmlspecialchars($dernierProduit['nom']) ?></h3>
                     <p><?= htmlspecialchars($dernierProduit['description']) ?></p>
                     <p>Prix : <?= htmlspecialchars($dernierProduit['prix']) ?> €</p>
-                    <button onclick="stopEventPropagation(event); window.location='?page=commander';">Commander</button>
+                    <button onclick="stopEventPropagation(event); <?php echo isset($_SESSION['id_utilisateur']) && !empty($_SESSION['id_utilisateur']) ? 'window.location=\'?page=commander&id_produit=' . htmlspecialchars($dernierProduit['id_produit']) . '\'' : 'window.location=\'?page=login\''; ?>">Commander</button>
                 </div>
             </div>
         <?php endif; ?>
     </div>
 </div>
+
+<script>
+    function navigateToProduct(idProduit) {
+        window.location = '?page=produit&id_produit=' + idProduit;
+    }
+
+    function stopEventPropagation(event) {
+        event.stopPropagation();
+    }
+</script>

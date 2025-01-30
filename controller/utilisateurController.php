@@ -83,7 +83,7 @@ class utilisateurController {
         } else {
             include 'view/login.php';
         }
-    }    
+    }
 
     public function logout()
     {
