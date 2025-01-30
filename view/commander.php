@@ -3,6 +3,11 @@
         session_start();
     }
 
+    if (!isset($_SESSION['id_utilisateur'])) {
+        header('Location: index.php?page=accueil');
+        exit;
+    }
+
     $id_produit = isset($_GET['id_produit']) ? $_GET['id_produit'] : null;
 
     if ($id_produit) {

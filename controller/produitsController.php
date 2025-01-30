@@ -36,4 +36,71 @@ class produitsController {
             echo "Produit non trouvé.";
         }
     }
+
+    public function ajouterProduit()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $nom = $_POST['nom'];
+            $description = $_POST['description'];
+            $prix = $_POST['prix'];
+            $image = $_POST['image'];
+
+            if (!is_numeric($prix)) {
+                $this->setFlashMessage('error', 'Le prix doit être un nombre.');
+                header('Location: index.php?page=ajouterProduit');
+                exit;
+            }
+
+            $this->model->addProduit($nom, $description, $prix, $image);
+            $this->setFlashMessage('success', 'Produit ajouté avec succès.');
+            header('Location: index.php?page=produits');
+            exit;
+        } else {
+            include 'view/ajouterProduit.php';
+        }
+    }
+
+    public function modifierProduit($id_produit)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $nom = $_POST['nom'];
+            $description = $_POST['description'];
+            $prix = $_POST['prix'];
+            $image = $_POST['image'];
+
+            if (!is_numeric($prix)) {
+                $this->setFlashMessage('error', 'Le prix doit être un nombre.');
+                header('Location: index.php?page=modifierProduit&id_produit=' . $id_produit);
+                exit;
+            }
+
+            $this->model->updateProduit($id_produit, $nom, $description, $prix, $image);
+            $this->setFlashMessage('success', 'Produit modifié avec succès.');
+            header('Location: index.php?page=produits');
+            exit;
+        } else {
+            $produit = $this->model->getProduitsById($id_produit);
+            if ($produit) {
+                include 'view/modifierProduit.php';
+            } else {
+                echo "Produit non trouvé.";
+            }
+        }
+    }
+
+    public function supprimerProduit($id_produit)
+    {
+        $this->model->deleteProduit($id_produit);
+        $this->setFlashMessage('success', 'Produit supprimé avec succès.');
+        header('Location: index.php?page=produits');
+        exit;
+    }
+
+    private function setFlashMessage($type, $message)
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        $_SESSION['flash_message'] = ['type' => $type, 'message' => $message];
+    }
 }

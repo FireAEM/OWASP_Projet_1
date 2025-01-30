@@ -27,16 +27,5 @@
                 <p>Copyright © <?php echo date('Y'); ?></p>
             </div>
         </footer>
-
-        <script>
-            function navigateToProduct(id) {
-                window.location = '?page=produit&velo=' + id;
-            }
-
-            function stopEventPropagation(event) {
-                event.stopPropagation();
-        }
-        </script>
-
     </body>
 </html>

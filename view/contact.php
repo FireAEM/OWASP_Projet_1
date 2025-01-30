@@ -18,17 +18,25 @@
         $prenom = htmlspecialchars($_SESSION['prenom']);
         $email = htmlspecialchars($_SESSION['email']);
     }
-
-    // Afficher la liste des messages si l'utilisateur est un administrateur
-    if ($id_role_utilisateur == 2) {
-        $messages = $formulaireModel->getMessages();
 ?>
 
-        <div class="home">
+<div class="home">
+    <div class="contactContainer">
+        <?php if ($id_role_utilisateur == 2): // Afficher la liste des messages si l'utilisateur est un administrateur ?>
             <div class="adminMessageContainer">
-                <h1>Liste des Messages</h1>
+                <h1>Liste des messages</h1>
+
+                <?php
+                    if (isset($_SESSION['flash_message'])) {
+                        echo '<p class="' . $_SESSION['flash_message']['type'] . '">' . htmlspecialchars($_SESSION['flash_message']['message']) . '</p>';
+                        unset($_SESSION['flash_message']);
+                    }
+                ?>
+                
                 <div class="adminMessageList">
-                    <?php if (!empty($messages)): ?>
+                    <?php
+                    $messages = $formulaireModel->getMessages();
+                    if (!empty($messages)): ?>
                         <?php foreach ($messages as $message): ?>
                             <div class="adminMessageItem">
                                 <div>
@@ -43,16 +51,9 @@
                         <p>Aucun message trouvé.</p>
                     <?php endif; ?>
                 </div>
-
             </div>
+        <?php endif; ?>
 
-        </div>
-
-<?php
-    } else {
-?>
-
-    <div class="home">
         <div class="contact">
             <div class="contactInfo">
                 <h1>Contactez-nous</h1>
@@ -95,6 +96,4 @@
         </div>
     </div>
 
-<?php
-}
-?>
+</div>

@@ -47,13 +47,31 @@ switch ($page) {
     case 'produit':
         include_once('controller/produitsController.php');
         $controller = new produitsController();
-        if (isset($_GET['velo'])) {
-            $controller->produit($_GET['velo']);
+        if (isset($_GET['id_produit'])) {
+            $controller->produit($_GET['id_produit']);
         } else {
             echo "Produit non spécifié.";
         }
         break;
 
+    case 'ajouterProduit':
+        include_once('controller/produitsController.php');
+        $controller = new produitsController();
+        $controller->ajouterProduit();
+        break;
+    
+    case 'modifierProduit':
+        include_once('controller/produitsController.php');
+        $controller = new produitsController();
+        $controller->modifierProduit($_GET['id_produit']);
+        break;
+    
+    case 'supprimerProduit':
+        include_once('controller/produitsController.php');
+        $controller = new produitsController();
+        $controller->supprimerProduit($_GET['id_produit']);
+        break;  
+        
     case 'passerCommande':
         include_once('controller/commandeController.php');
         $controller = new commandeController();
@@ -66,16 +84,16 @@ switch ($page) {
         }
         break;
     
-    case 'commandes':
-        include_once('controller/commandeController.php');
-        session_start();
-        if (isset($_SESSION['id_utilisateur'])) {
-            $controller = new commandeController();
-            $controller->afficherCommandes($_SESSION['id_utilisateur']);
-        } else {
-            header('Location: index.php?page=login');
-        }
-        break;
+    // case 'commandes':
+    //     include_once('controller/commandeController.php');
+    //     session_start();
+    //     if (isset($_SESSION['id_utilisateur'])) {
+    //         $controller = new commandeController();
+    //         $controller->afficherCommandes($_SESSION['id_utilisateur']);
+    //     } else {
+    //         header('Location: index.php?page=login');
+    //     }
+    //     break;
         
     case 'commander':
         if (session_status() == PHP_SESSION_NONE) {

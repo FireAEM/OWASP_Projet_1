@@ -165,6 +165,17 @@ nav ul li a:hover {
 
 /* CSS pour la page products •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• */
 
+.productsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.productsHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .productsList {
     display: flex;
     flex-wrap: wrap;
@@ -198,8 +209,34 @@ nav ul li a:hover {
     transition: 0.25s;
 }
 
-.productContent p:nth-of-type(1) {
+.productContent > p:nth-of-type(1) {
     font-weight: 300;
+}
+
+.productAdminAction {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+    width: 100%;
+}
+.productAdminAction a {
+    text-decoration: none;
+    color: var(--text-color);
+    background-color: rgb(250, 250, 250);
+    padding: 10px;
+    border-radius: 10px;
+}
+.productAdminAction a:hover {
+    background-color: var(--accent-color1);
+    transition: 0.25s;
+}
+.productAdminAction a:active {
+    background-color: var(--accent-color2);
+    transform: scale(0.95);
+    transition: 0.25s;
+}
+.productAdminAction a p {
+    margin: 0;
 }
 
 
@@ -292,14 +329,14 @@ nav ul li a:hover {
 
 /* CSS pour le formulaire d'inscription, de connexio et de contact •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• */
 
-.registerContainer, .loginContainer {
+.registerContainer, .loginContainer, .addProductContainer, .updateProductContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.registerFormContainer, .loginFormContainer {
+.registerFormContainer, .loginFormContainer, .addProductFormContainer, .updateProductFormContainer {
     display: flex;
     flex-direction: column;
     width: 30vw;
@@ -309,9 +346,15 @@ nav ul li a:hover {
     border-radius: 20px;
 }
 
-.registerFormContainer h1, .loginFormContainer h1 {
+.registerFormContainer h1, .loginFormContainer h1, .addProductFormContainer h1, .updateProductFormContainer h1 {
     text-align: center;
     margin: 0;
+}
+
+.contactContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
 }
 
 .contact {
@@ -340,7 +383,7 @@ nav ul li a:hover {
     border-radius: 20px;
 }
 
-.registerFormContainer form, .loginFormContainer form, .contactForm {
+.registerFormContainer form, .loginFormContainer form, .addProductFormContainer form, .updateProductFormContainer form, .contactForm {
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -351,22 +394,22 @@ nav ul li a:hover {
     border-radius: 20px;
 }
 
-.registerFormContainer form div, .loginFormContainer form div, .contactForm div {
+.registerFormContainer form div, .loginFormContainer form div, .addProductFormContainer form div, .updateProductFormContainer form div, .contactForm div {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
-.registerFormContainer form div label, .loginFormContainer form div label, .contactForm div label {
+.registerFormContainer form div label, .loginFormContainer form div label, .addProductFormContainer form div label, .updateProductFormContainer form div label, .contactForm div label {
     font-weight: 500;
 }
-.registerFormContainer form div input, .loginFormContainer form div input, .contactForm div input, .contactForm div textarea {
+.registerFormContainer form div input, .loginFormContainer form div input, .addProductFormContainer form div input, .addProductFormContainer form div textarea, .updateProductFormContainer form div input, .updateProductFormContainer form div textarea, .contactForm div input, .contactForm div textarea {
     border: 1px solid var(--border-color1);
     border-radius: 10px;
     padding: 10px;
     resize: vertical;
 }
 
-.registerFormContainer button, .loginFormContainer button, .contactForm button {
+.registerFormContainer button, .loginFormContainer button, .addProductFormContainer button, .updateProductFormContainer button, .contactForm button {
     margin-top: 20px;
     border-radius: 50px;
 }
@@ -438,17 +481,17 @@ nav ul li a:hover {
     margin: 0;
 }
 
-.dashboardOrdersContainer {
+.dashboardOrdersContainer, .adminDashboardOrdersContainer, .adminDashboardUsersContainer {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     gap: 10px;
 }
-.dashboardOrdersContainer h2 {
+.dashboardOrdersContainer h2, .adminDashboardOrdersContainer h2, .adminDashboardUsersContainer h2 {
     margin: 0;
 }
 
-.orderItem {
+.orderItem, .userItem {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -456,11 +499,11 @@ nav ul li a:hover {
     background-color: rgb(250, 250, 250);
     border-radius: 10px;
 }
-.orderItem p {
+.orderItem p, .userItem p {
     margin: 0;
     font-weight: 300;
 }
-.orderItem > p:first-child {
+.orderItem > p:first-child, .userItem > p:first-child {
     font-weight: 500;
 }
 

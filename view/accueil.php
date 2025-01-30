@@ -5,6 +5,8 @@
 ?>
 
 <div class="home">
+    
+    <h1>Bienvenue sur Square!</h1>
 
     <?php
         if (isset($_SESSION['flash_message'])) {
@@ -12,8 +14,6 @@
             unset($_SESSION['flash_message']);
         }
     ?>
-    
-    <h1>Bienvenue sur Square!</h1>
 
     <h2>Dernier produit ajouté</h2>
     <div class="products">

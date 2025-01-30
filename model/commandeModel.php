@@ -31,6 +31,13 @@ class commandeModel {
         return $stmt->execute();
     }
 
+    public function getAllCommandes()
+    {
+        $stmt = $this->bdd->prepare("SELECT * FROM commande ORDER BY date_commande DESC");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getCommandesByUtilisateur($id_utilisateur)
     {
         $stmt = $this->bdd->prepare("SELECT * FROM commande WHERE id_utilisateur = :id_utilisateur ORDER BY date_commande DESC");

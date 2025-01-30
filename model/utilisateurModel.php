@@ -10,6 +10,13 @@ class utilisateurModel {
         $this->bdd = Bdd::connexion();
     }
 
+    public function getAllUtilisateurs()
+    {
+        $stmt = $this->bdd->prepare("SELECT * FROM utilisateur");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function addUtilisateur($nom, $prenom, $email, $mot_de_passe, $id_role_utilisateur)
     {
         $stmt = $this->bdd->prepare("INSERT INTO utilisateur (nom, prenom, email, mot_de_passe, id_role_utilisateur) VALUES (:nom, :prenom, :email, :mot_de_passe, :id_role_utilisateur)");
