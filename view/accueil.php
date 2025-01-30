@@ -1,4 +1,15 @@
 <div class="home">
+
+    <?php
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        if (isset($_SESSION['flash_message'])) {
+            echo '<p class="' . $_SESSION['flash_message']['type'] . '">' . $_SESSION['flash_message']['message'] . '</p>';
+            unset($_SESSION['flash_message']);
+        }
+    ?>
+    
     <h1>Bienvenue sur Smartbike!</h1>
 
     <h2>Dernier produit ajouté</h2>

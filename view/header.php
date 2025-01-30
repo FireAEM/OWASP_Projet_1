@@ -31,6 +31,10 @@
                 <a href="index.php?page=contact" class="headerContact">
                     ✉️ Contact
                 </a>
+
+                <a href="index.php?page=login" class="headerAccount">
+                    🧔 Compte
+                </a>
             </div>
 
         </header>

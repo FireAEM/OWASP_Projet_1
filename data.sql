@@ -1,3 +1,7 @@
+INSERT INTO role_utilisateur (nom) VALUES 
+('client'),
+('administrateur');
+
 INSERT INTO produit (nom, description, photo, prix) VALUES 
 ('Bike5', 'Vélo électrique moderne et performant.', 'bike5.jpg', 1500.00),
 ('BikeOne', 'Le vélo classique de notre gamme.', 'bikeone.jpg', 800.00),

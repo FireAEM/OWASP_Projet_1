@@ -3,6 +3,33 @@
 $page = (isset($_GET['page'])) ? $_GET['page'] : 'accueil';
 
 switch ($page) {
+    case 'register':
+        include_once('controller/utilisateurController.php');
+        $controller = new utilisateurController();
+        $controller->register();
+        break;
+    
+    case 'login':
+        include_once('controller/utilisateurController.php');
+        $controller = new utilisateurController();
+        $controller->login();
+        break;
+    
+    case 'dashboard':
+        session_start();
+        if (!isset($_SESSION['id_utilisateur'])) {
+            header('Location: index.php?page=login');
+            exit;
+        }
+        include 'view/dashboard.php';
+        break;
+    
+    case 'logout':
+        include_once('controller/utilisateurController.php');
+        $controller = new utilisateurController();
+        $controller->logout();
+        break;      
+    
     case 'produits':
         include_once('controller/produitsController.php');
         $controller = new produitsController();
