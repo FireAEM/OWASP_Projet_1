@@ -72,6 +72,7 @@ class utilisateurController {
                 $_SESSION['nom'] = $utilisateur['nom'];
                 $_SESSION['prenom'] = $utilisateur['prenom'];
                 $_SESSION['email'] = $utilisateur['email'];
+                $_SESSION['id_role_utilisateur'] = $utilisateur['id_role_utilisateur'];
                 $this->setFlashMessage('success', 'Connexion réussie!');
                 header('Location: index.php?page=accueil');
                 exit;
@@ -83,7 +84,7 @@ class utilisateurController {
         } else {
             include 'view/login.php';
         }
-    }
+    }      
 
     public function logout()
     {

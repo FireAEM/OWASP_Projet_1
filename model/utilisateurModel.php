@@ -35,5 +35,5 @@ class utilisateurModel {
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
+    }    
 }
